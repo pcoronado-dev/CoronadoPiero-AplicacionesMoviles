@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
@@ -33,6 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coronado.semana3tarea.ui.theme.SEMANA3TAREATheme
+import kotlin.math.roundToInt
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -191,6 +193,15 @@ fun RegistroNotas(modifier: Modifier = Modifier){
                 color = Color.Gray
             )
 
+        } else {
+
+            Resultado(
+                notaFundamentos = notaFundamentos,
+                notaPOO = notaPOO,
+                notaMoviles = notaMoviles,
+                notaBD = notaBD,
+                redondear = redondear
+            )
         }
 
         Spacer(
@@ -258,4 +269,70 @@ fun CursoSlider(
         )
     }
 }
+
+@Composable
+fun Resultado(
+    notaFundamentos: Float,
+    notaPOO: Float,
+    notaMoviles: Float,
+    notaBD: Float,
+    redondear: Boolean
+) {
+
+    val promedioPonderado = notaFundamentos * 0.20f + notaPOO * 0.25f + notaMoviles * 0.30f + notaBD * 0.25f
+
+    val promedioFinal = if (redondear) {
+
+        promedioPonderado.roundToInt().toFloat()
+
+    } else { promedioPonderado }
+
+    Card(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+
+        Column(
+            modifier = Modifier.padding(16.dp),
+
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+
+
+            Text(
+                text = "RESULTADOS",
+
+                fontSize = 20.sp
+            )
+
+
+            // =========================
+            // PROMEDIO PONDERADO
+            // =========================
+
+            Text(
+                text = String.format(
+                    "Promedio ponderado: %.2f",
+                    promedioPonderado
+                )
+            )
+
+            Text(
+
+                text = if (redondear) {
+
+                    "Promedio final: ${promedioFinal.toInt()} (redondeado)"
+
+                } else {
+
+                    String.format(
+                        "Promedio final: %.2f",
+                        promedioFinal
+                    )
+                }
+            )
+        }
+    }
+}
+
+
 
