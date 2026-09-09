@@ -60,6 +60,50 @@ fun RegistroNotas(modifier: Modifier = Modifier){
             text = "Asigna las notas de tus cursos",
             fontSize = 20.sp
         )
+
+        CursoSlider(
+            nombre = "Fundamentos de Programación",
+            peso = "20%",
+            nota = notaFundamentos,
+
+            onNotaChange = {
+                notaFundamentos = it
+                promedioCalculado = false
+            }
+        )
+
+        CursoSlider(
+            nombre = "Programación Orientada a Objetos",
+            peso = "25%",
+            nota = notaPOO,
+
+            onNotaChange = {
+                notaPOO = it
+                promedioCalculado = false
+            }
+        )
+
+        CursoSlider(
+            nombre = "Programación en Móviles",
+            peso = "30%",
+            nota = notaMoviles,
+
+            onNotaChange = {
+                notaMoviles = it
+                promedioCalculado = false
+            }
+        )
+
+        CursoSlider(
+            nombre = "Base de Datos",
+            peso = "25%",
+            nota = notaBD,
+
+            onNotaChange = {
+                notaBD = it
+                promedioCalculado = false
+            }
+        )
     }
 }
 
