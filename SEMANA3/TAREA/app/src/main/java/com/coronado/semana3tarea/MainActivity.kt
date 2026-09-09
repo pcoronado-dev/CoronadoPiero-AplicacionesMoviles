@@ -9,10 +9,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
@@ -163,6 +165,43 @@ fun RegistroNotas(modifier: Modifier = Modifier){
                 text = "Confirmo que las notas son correctas"
             )
         }
+
+        Button(
+            onClick = {
+
+                promedioCalculado = true
+
+            },
+
+            enabled = confirmado,
+
+            modifier = Modifier.fillMaxWidth()
+        ) {
+
+            Text(
+                text = "CALCULAR PROMEDIO"
+            )
+        }
+
+        if (!promedioCalculado) {
+
+            Text(
+                text = "Asigna las notas y confirma para calcular",
+
+                color = Color.Gray
+            )
+
+        }
+
+        Spacer(
+            modifier = Modifier.weight(1f)
+        )
+
+        Text(
+            text = "Desarrollado por: Piero Alexander Coronado Quispe",
+
+            modifier = Modifier.fillMaxWidth()
+        )
 
     }
 }
