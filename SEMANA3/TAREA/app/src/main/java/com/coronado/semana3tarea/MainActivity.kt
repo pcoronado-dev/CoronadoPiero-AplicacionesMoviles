@@ -287,6 +287,45 @@ fun Resultado(
 
     } else { promedioPonderado }
 
+    val observacion: String
+
+    val colorChip: Color
+
+
+    when {
+
+        promedioFinal >= 17 -> {
+
+            observacion = "EXCELENTE"
+
+            colorChip = Color(0xFF2E7D32)
+        }
+
+
+        promedioFinal >= 13 -> {
+
+            observacion = "APROBADO"
+
+            colorChip = Color(0xFF4CAF50)
+        }
+
+
+        promedioFinal >= 10 -> {
+
+            observacion = "EN RECUPERACIÓN"
+
+            colorChip = Color(0xFFFFB300)
+        }
+
+
+        else -> {
+
+            observacion = "DESAPROBADO"
+
+            colorChip = Color(0xFFD32F2F)
+        }
+    }
+
     Card(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -303,11 +342,6 @@ fun Resultado(
 
                 fontSize = 20.sp
             )
-
-
-            // =========================
-            // PROMEDIO PONDERADO
-            // =========================
 
             Text(
                 text = String.format(
@@ -329,6 +363,33 @@ fun Resultado(
                         promedioFinal
                     )
                 }
+            )
+            Box(
+
+                modifier = Modifier
+                    .background(
+                        color = colorChip,
+
+                        shape = RoundedCornerShape(20.dp)
+                    )
+
+                    .padding(
+                        horizontal = 16.dp,
+                        vertical = 8.dp
+                    )
+            ) {
+
+                Text(
+                    text = observacion,
+
+                    color = Color.White
+                )
+            }
+
+            Text(
+                text = "✓ Cálculo realizado correctamente",
+
+                color = Color(0xFF2E7D32)
             )
         }
     }
