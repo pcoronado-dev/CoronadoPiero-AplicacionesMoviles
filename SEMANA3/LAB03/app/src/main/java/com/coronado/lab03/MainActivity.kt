@@ -4,13 +4,18 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.coronado.lab03.ui.theme.Lab03Theme
 
 class MainActivity : ComponentActivity() {
@@ -20,8 +25,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Lab03Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    PantallaRegistro(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -31,17 +35,20 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun PantallaRegistro(modifier: Modifier = Modifier) { Column(
+    modifier = modifier
+        .fillMaxSize()
+        .padding(16.dp)
+) {
     Text(
-        text = "Hello $name!",
-        modifier = modifier
+        text = "Nuevo producto",
+        style = MaterialTheme.typography.headlineSmall
     )
-}
+    Text(
+        text = "Completa los datos y presiona Agregar", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.outline
+    )
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Lab03Theme {
-        Greeting("Android")
-    }
+    Spacer(modifier = Modifier.height(24.dp))
+// aquí irán los campos de texto
+}
 }
