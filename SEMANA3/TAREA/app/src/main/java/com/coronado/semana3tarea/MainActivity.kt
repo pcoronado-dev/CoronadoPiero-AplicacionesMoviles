@@ -70,6 +70,7 @@ fun RegistroNotas(modifier: Modifier = Modifier){
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(Color(0xFFCE93D8))
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
@@ -241,7 +242,7 @@ fun CursoSlider(
             Box(
                 modifier = Modifier
                     .background(
-                        color = Color.Blue,
+                        color = Color(0xFF6A1B9A),
 
                         shape = RoundedCornerShape(8.dp)
                     )
@@ -260,11 +261,8 @@ fun CursoSlider(
 
         Slider(
             value = nota,
-
             onValueChange = onNotaChange,
-
             valueRange = 0f..20f,
-
             steps = 19
         )
     }
