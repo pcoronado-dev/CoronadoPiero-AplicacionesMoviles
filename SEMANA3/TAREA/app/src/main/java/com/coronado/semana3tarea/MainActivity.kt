@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,6 +35,15 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun RegistroNotas(modifier: Modifier = Modifier){
+
+    var notaFundamentos by remember { mutableFloatStateOf(0f) }
+
+    var notaPOO by remember { mutableFloatStateOf(0f) }
+
+    var notaMoviles by remember { mutableFloatStateOf(0f) }
+
+    var notaBD by remember { mutableFloatStateOf(0f) }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
