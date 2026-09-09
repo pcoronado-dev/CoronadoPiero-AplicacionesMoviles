@@ -13,8 +13,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -54,6 +56,10 @@ fun RegistroNotas(modifier: Modifier = Modifier){
     var notaMoviles by remember { mutableFloatStateOf(0f) }
 
     var notaBD by remember { mutableFloatStateOf(0f) }
+
+    var redondear by remember { mutableStateOf(false) }
+
+    var confirmado by remember { mutableStateOf(false) }
 
     var promedioCalculado by remember { mutableStateOf(false) }
 
@@ -117,6 +123,47 @@ fun RegistroNotas(modifier: Modifier = Modifier){
                 promedioCalculado = false
             }
         )
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+
+            Text(
+                text = "Redondear promedio final",
+
+                modifier = Modifier.weight(1f)
+            )
+
+            Switch(
+                checked = redondear,
+
+                onCheckedChange = {
+                    redondear = it
+                    promedioCalculado = false
+                }
+            )
+        }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+
+            Checkbox(
+                checked = confirmado,
+
+                onCheckedChange = {
+                    confirmado = it
+                }
+            )
+
+            Text(
+                text = "Confirmo que las notas son correctas"
+            )
+        }
+
     }
 }
 
