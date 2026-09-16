@@ -32,12 +32,18 @@ class MainActivity : ComponentActivity() {
 fun TemperatureDisplay() {
 
     var temperatura by remember { mutableStateOf(20) }
+    val colorTexto = when {
+        temperatura > 30 -> Color.Red
+        temperatura < 10 -> Color.Blue
+        else -> Color.Black
+    }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = "Temperatura: $temperatura °C",
+            color = colorTexto,
             fontSize = 28.sp
         )
 
