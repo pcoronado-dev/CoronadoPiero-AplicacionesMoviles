@@ -1,6 +1,7 @@
 package com.coronado.lab04carritotecsup
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
@@ -18,6 +20,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
@@ -31,6 +34,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 
 data class Producto(
     val nombre: String,
@@ -91,14 +95,39 @@ fun PantallaCarrito(modifier: Modifier = Modifier) {
                 val cantidadNum = cantidad.toIntOrNull() ?: 0
                 if (nombre.isNotBlank() && precioNum > 0 && cantidadNum > 0) {
                     productos.add(Producto(nombre, precioNum, cantidadNum))
-                    // TODO: limpia los 3 campos asignándoles ""
+                    nombre = ""
+                    precio = ""
+                    cantidad = ""
                 }
             },
             modifier = Modifier.fillMaxWidth()
         ) { Text("AGREGAR") }
-
-        Text(text = "Productos: ${productos.size}")
-
+        if (productos.isEmpty()) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
+                ) {Text(
+                    text = "Tu carrito está vacío",
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                )
+                    Text(
+                        text = "Agrega productos usando el formulario superior.",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+        } else {
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
@@ -110,6 +139,65 @@ fun PantallaCarrito(modifier: Modifier = Modifier) {
                     producto = producto,
                     onEliminar = { productos.remove(producto) }
                 )
+            }
+        }
+        val subtotal = productos.sumOf { it.precio * it.cantidad }
+        val igv = subtotal * 0.18
+        val total = subtotal + igv
+
+        Surface(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(12.dp),
+            color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f) // Fondo suave
+        ) {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(text = "Productos:", style = MaterialTheme.typography.bodyMedium)
+                    Text(
+                        text = "${productos.size}",
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(text = "Subtotal:", style = MaterialTheme.typography.bodyMedium)
+                    Text(text = "S/ ${String.format("%.2f", subtotal)}", style = MaterialTheme.typography.bodyMedium)
+                }
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(text = "IGV (18%):", style = MaterialTheme.typography.bodyMedium)
+                    Text(text = "S/ ${String.format("%.2f", igv)}", style = MaterialTheme.typography.bodyMedium)
+                }
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = "TOTAL:",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    Text(
+                        text = "S/ ${String.format("%.2f", total)}",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
+                }
             }
         }
     }
