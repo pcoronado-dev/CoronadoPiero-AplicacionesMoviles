@@ -7,4 +7,6 @@ Esto está dirigido a un laboratorio académico de gestión de estados en Androi
 Quiero que respondas en formato de código Kotlin completo, limpio y listo para compilar, dividiendo la solución en el data class Tarea, el composable para la fila individual (ItemTarea), el composable principal (PantallaTareas) y una vista previa con @Preview.
 
 Ten en cuenta estas condiciones: usa únicamente estados locales con remember, mutableStateOf y mutableStateListOf para manejar los datos sin ViewModel; utiliza Material 3 con IconButtons (Icons.Default.Delete) para la eliminación y asegura que la lista sea desplazable mediante LazyColumn.
+<img width="238" height="536" alt="image" src="https://github.com/user-attachments/assets/1650a950-36ee-4837-99f1-912ca758f222" />
+<img width="238" height="535" alt="image" src="https://github.com/user-attachments/assets/66b980c1-1372-4bad-9c3a-6f091d9aa920" />
 
