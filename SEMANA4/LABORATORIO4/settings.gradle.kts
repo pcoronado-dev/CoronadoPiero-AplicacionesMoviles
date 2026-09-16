@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "lab04-carrito-coronado"
+rootProject.name = "Lab04CarritoTecsup"
 include(":app")

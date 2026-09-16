@@ -1,4 +1,4 @@
-package com.coronado.myapplication
+package com.coronado.lab04carritotecsup
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,14 +11,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.coronado.myapplication.ui.theme.Lab04carritocoronadoTheme
+import com.coronado.lab04carritotecsup.ui.theme.Lab04CarritoTecsupTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Lab04carritocoronadoTheme {
+            Lab04CarritoTecsupTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
@@ -41,7 +41,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    Lab04carritocoronadoTheme {
+    Lab04CarritoTecsupTheme {
         Greeting("Android")
     }
 }

@@ -1,4 +1,4 @@
-package com.coronado.myapplication
+package com.coronado.lab04carritotecsup
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.coronado.myapplication.ui.theme
+package com.coronado.lab04carritotecsup.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

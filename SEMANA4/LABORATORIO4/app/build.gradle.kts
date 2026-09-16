@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.coronado.myapplication"
+    namespace = "com.coronado.lab04carritotecsup"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "com.coronado.myapplication"
+        applicationId = "com.coronado.lab04carritotecsup"
         minSdk = 24
         targetSdk = 37
         versionCode = 1

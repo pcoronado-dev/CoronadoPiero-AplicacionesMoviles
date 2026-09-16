@@ -1,4 +1,4 @@
-package com.coronado.myapplication.ui.theme
+package com.coronado.lab04carritotecsup.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun Lab04carritocoronadoTheme(
+fun Lab04CarritoTecsupTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
