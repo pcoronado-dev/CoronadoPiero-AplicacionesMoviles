@@ -37,9 +37,10 @@ fun TemperatureDisplay() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Temperatura: 20 °C",
+            text = "Temperatura: $temperatura °C",
             fontSize = 28.sp
         )
+
         Row {
 
             Button(
@@ -56,6 +57,14 @@ fun TemperatureDisplay() {
                 }
             ) {
                 Text("Bajar")
+            }
+
+            Button(
+                onClick = {
+                    temperatura = 20
+                }
+            ) {
+                Text("Resetear")
             }
         }
     }
