@@ -136,3 +136,11 @@ fun PantallaTareas() {
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun PreviewPantallaTareas() {
+    MaterialTheme {
+        PantallaTareas()
+    }
+}
+
