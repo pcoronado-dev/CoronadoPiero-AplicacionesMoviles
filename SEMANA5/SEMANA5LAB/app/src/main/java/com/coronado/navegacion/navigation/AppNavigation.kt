@@ -9,6 +9,7 @@ import androidx.navigation.navArgument
 import com.coronado.navegacion.screens.DetailScreen
 import com.coronado.navegacion.screens.HomeScreen
 import com.coronado.navegacion.screens.ListScreen
+import com.coronado.navegacion.screens.LoginScreen
 import com.coronado.navegacion.screens.ProfileScreen
 
 @Composable
@@ -16,8 +17,11 @@ fun AppNavigation() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Screen.Home.route
+        startDestination = Screen.Login.route
     ) {
+        composable(Screen.Login.route) {
+            LoginScreen(navController)
+        }
         composable(Screen.Home.route) {
             HomeScreen(navController)
         }
