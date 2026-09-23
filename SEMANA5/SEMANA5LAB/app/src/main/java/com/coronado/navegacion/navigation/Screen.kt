@@ -1,4 +1,12 @@
 package com.coronado.navegacion.navigation
 
-class Screen {
+sealed class Screen(val route: String) {
+    object Home : Screen(route = "home")
+    object List : Screen(route = "list")
+    object Profile : Screen(route = "profile")
+
+    // RUTA CON ARGUMENTO
+    object Detail : Screen(route = "detail/{itemId}") {
+        fun createRoute(itemId: Int): String = "detail/$itemId"
+    }
 }
